@@ -1,9 +1,14 @@
 package br.com.fatecmogidascruzes.noite.topicos.banco.infraestrutura.conta.persistencia;
 
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Conta;
+
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Contas;
 
 public class ContaRepositorioJPA implements Contas {
@@ -50,6 +55,14 @@ public class ContaRepositorioJPA implements Contas {
         } catch(NoResultException e) {
             return null;
         }
+    }
+
+    @Override 
+    public List<Conta> listarTodas(){
+        TypedQuery<Conta> consulta = entityManager.createQuery(
+                "SELECT conta FROM Conta conta", Conta.class
+        );
+        return consulta.getResultList();
     }
 
     @Override

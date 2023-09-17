@@ -1,12 +1,17 @@
 package br.com.fatecmogidascruzes.noite.topicos.banco.comum;
 
 import br.com.fatecmogidascruzes.noite.topicos.banco.infraestrutura.conta.persistencia.ContaRepositorioJPA;
-import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.*;
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.politica.PoliticaValidacaoSaldo;
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.politica.PoliticaValidacaoSaldoComum;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Contas;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.AbrirConta;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.Depositar;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.PesquisarContas;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.PesquisarTransacoes;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.RealizarPix;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.Sacar;
 
 public class LocalizadorServico {
 
@@ -36,15 +41,10 @@ public class LocalizadorServico {
         return new AbrirConta(contaRepositorio());
     }
 
-    public static RealizarTransferencia realizarTransferencia() {
-        return new RealizarTransferencia(contaRepositorio(), politicaAtualizacaoSaldo());
+    public static PesquisarContas pesquisarContas() {
+        return new PesquisarContas(contaRepositorio());
     }
-
-    public static PagarBoleto pagarBoleto() {
-        return new PagarBoleto(contaRepositorio(), politicaAtualizacaoSaldo());
-    }
-
-    public static ConsultaSaldo consultarSaldo() {
-        return new ConsultaSaldo(contaRepositorio(), politicaAtualizacaoSaldo());
+    public static PesquisarTransacoes pesquisarTransacoes() {
+        return new PesquisarTransacoes(contaRepositorio());
     }
 }

@@ -1,7 +1,5 @@
 package br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.politica;
 
-import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.politica.PoliticaValidacaoSaldo;
-import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Conta;
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Conta;
 
 public class PoliticaValidacaoSaldoComum implements PoliticaValidacaoSaldo {

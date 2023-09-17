@@ -1,5 +1,7 @@
 package br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta;
 
+import java.util.List;
+
 public interface Contas {
 
     void abrir(Conta conta);
@@ -9,6 +11,8 @@ public interface Contas {
     Conta consultarPorNumero(String numero);
     
     Conta consultarPorPix(String codigoPix);
+
+    List<Conta> listarTodas();
     
     void iniciarTransacao();
     

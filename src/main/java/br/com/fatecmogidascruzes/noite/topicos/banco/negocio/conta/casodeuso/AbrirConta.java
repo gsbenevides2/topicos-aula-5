@@ -2,6 +2,7 @@ package br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso;
 
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Conta;
 import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.Contas;
+import br.com.fatecmogidascruzes.noite.topicos.banco.negocio.conta.casodeuso.excecao.ExcecaoContaJaExiste;
 
 public class AbrirConta {
     
@@ -12,6 +13,10 @@ public class AbrirConta {
     }
     
     public void executar(String numeroConta, String codigoPix) {
+        if( contas.consultarPorNumero(numeroConta) != null ) {
+            throw new ExcecaoContaJaExiste("Conta já existe");
+        }
+
         Conta conta = new Conta(numeroConta);
         conta.setCodigoPix(codigoPix);
         
